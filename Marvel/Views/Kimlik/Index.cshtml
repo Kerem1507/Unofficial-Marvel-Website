@@ -1,0 +1,58 @@
+﻿@model IEnumerable<Marvel.Models.Model.Kimlik>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<br /><br /><br />
+<table class="table table-bordered table-striped table-responsive-sm" style="margin-left:200px;">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Keywords)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LogoURL)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Unvan)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Title)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Keywords)
+        </td>
+        <td>
+            @Html.Raw(item.Description)
+        </td>
+        <td>
+            <img class="img-responsive" src="@item.LogoURL" width="300" height="200"/>
+            @*@Html.DisplayFor(modelItem => item.LogoURL)*@
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Unvan)
+        </td>
+        <td>
+            @Html.ActionLink("Güncelle", "Edit", new { id=item.KimlikId }) 
+            @*@Html.ActionLink("Details", "Details", new { id=item.KimlikId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.KimlikId })*@
+        </td>
+    </tr>
+}
+
+</table>

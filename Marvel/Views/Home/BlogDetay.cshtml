@@ -1,0 +1,175 @@
+﻿@model Marvel.Models.Model.Blog
+@{
+    ViewBag.Title = "BlogDetay";
+    Layout = "~/Views/Shared/_SiteLayout.cshtml";
+}
+
+<section id="inner-headline">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <ul class="breadcrumb">
+                    <li><a href="#"><i class="fa fa-home"></i></a><i class="icon-angle-right"></i></li>
+                    <li class="active">Haber Detayı</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="content">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+                <article>
+                    <div class="post-image">
+                        <div class="post-heading">
+                            <h3>@Model.Baslik</h3>
+                        </div>
+                        <div class="bottom-article">
+                            <ul class="meta-post">
+                                <li><i class="icon-folder-open"></i><a href="#"> @Model.Kategori.KategoriAd</a></li>
+                                @*<li><i class="icon-comments"></i><a href="#">4 Comments</a></li>*@
+                            </ul>
+                        </div>
+                        <img src="@Model.ResimURL" alt="@Model.Baslik" style="margin-left:270px;" />
+                    </div>
+                    <div style="margin-left:370px;">
+                        <p>
+                            @Html.Raw(Model.Icerik)
+                        </p>
+                    </div>
+
+                </article>
+
+                <div class="row">
+                    <div class="col-lg-8">
+                        <div>
+                            <h3>Yorum Yap</h3>
+
+                            <form >
+                                <div>
+                                    <input class="form-control" type="text" id="adsoyad" placeholder="Ad Soyad: " required /><br />
+                                    <input class="form-control" type="email" id="email" placeholder="Email: " required /><br />
+                                    <textarea class="form-control" typeof="text" id="icerik"></textarea><br />
+                                    <button type="submit" class="btn btn-danger" id="gonder" value="Yorumunuz:">Yorum Yap</button>
+                                </div>
+                            </form>
+                            
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div>
+                        <h3>YORUMLAR</h3>
+                        @foreach (var item in Model.Yorums.OrderByDescending(x => x.YorumId).Where(x=>x.Onay==true))
+                        {
+                            <p>@item.AdSoyad - @item.Eposta</p>
+                            <p>@item.Icerik</p>
+                            <hr />
+                        }
+                    </div>
+                </div>
+
+
+                @*<div id="pagination">
+                            <span class="all">Page 1 of 3</span>
+                            <span class="current">1</span>
+                            <a href="#" class="inactive">2</a>
+                            <a href="#" class="inactive">3</a>
+                        </div>
+                    </div>*@
+                @*<div class="col-lg-4">
+                    <aside class="right-sidebar">
+                        <div class="widget">
+                            <form class="form-search">
+                                <input class="form-control" type="text" placeholder="Search..">
+                            </form>
+                        </div>*@
+                @*<div class="widget">
+                        <h5 class="widgetheading">Kategoriler</h5>
+                        @{
+                            Html.RenderAction("BlogKategoriPartial", "Home");
+                        }
+                    </div>*@
+                @*<div class="widget">
+                        <h5 class="widgetheading">Latest posts</h5>
+                        <ul class="recent">
+                            <li>
+                                <img src="img/dummies/blog/65x65/thumb1.jpg" class="pull-left" alt="" />
+                                <h6><a href="#">Lorem ipsum dolor sit</a></h6>
+                                <p>
+                                    Mazim alienum appellantur eu cu ullum officiis pro pri
+                                </p>
+                            </li>
+                            <li>
+                                <a href="#"><img src="img/dummies/blog/65x65/thumb2.jpg" class="pull-left" alt="" /></a>
+                                <h6><a href="#">Maiorum ponderum eum</a></h6>
+                                <p>
+                                    Mazim alienum appellantur eu cu ullum officiis pro pri
+                                </p>
+                            </li>
+                            <li>
+                                <a href="#"><img src="img/dummies/blog/65x65/thumb3.jpg" class="pull-left" alt="" /></a>
+                                <h6><a href="#">Et mei iusto dolorum</a></h6>
+                                <p>
+                                    Mazim alienum appellantur eu cu ullum officiis pro pri
+                                </p>
+                            </li>
+                        </ul>
+                    </div>*@
+
+                </aside>
+            </div>
+        </div>
+    </div>
+</section>
+
+@*<script src="~/Scripts/jquery-3.4.1.js"></script>*@
+
+<script src="~/Content/SiteLayout/js/jquery.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        $("#gonder").click(function () {
+            var adisoyadi = $("#adsoyad").val();
+            var epostasi = $("#eposta").val();
+            var yorumunuz = $("#icerik").val();
+            $.ajax({
+                url: '/Home/YorumYap/',
+                data: {adsoyad:adisoyadi,eposta: epostasi,icerik:yorumunuz,blogid:@Model.BlogId },
+                type: 'POST',
+                dataType: 'json',
+                success: function (data) {
+                    alert("Yorumunuz eklendi. Admin onayından geçtikten sonra yayınlanacaktır.");
+                }
+            });
+        });
+    })
+
+</script>
+@*<script type="text/javascript">
+                                document.querySelector('form').addEventListener('submit', async event => {
+                                        event.preventDefault();
+
+                                            let adisoyadi = document.querySelector('#adsoyad').value;
+                                            let epostasi = document.querySelector('#email').value;
+                                            let yorumunuz = document.querySelector('#icerik').value;
+                                            const response = await fetch('/Home/YorumYap/', {
+                                                method: 'POST',
+                                                body : JSON.stringify({
+                                                    adsoyad: adisoyadi,
+                                                    eposta: epostasi,
+                                                    icerik: yorumunuz,
+                                                    blogid: @Model.BlogId
+                                                })
+                                            });
+                                            const post = await response.json();
+                                            if( !post.ok) {
+                                                alert('hata');
+                                                return;
+                                            }
+                                            alert('Yorumunuz başarıyla eklenmiştir.');
+
+                                    })
+</script>*@

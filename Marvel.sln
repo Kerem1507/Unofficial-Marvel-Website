@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30309.148
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Marvel", "Marvel\Marvel.csproj", "{CDA83124-3392-4335-9B0E-5D62C6ADA2F4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Marvel.UnitTests", "Marvel.UnitTests\Marvel.UnitTests.csproj", "{4335FA46-DD14-4E0D-BF26-58B80AC22EF4}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CDA83124-3392-4335-9B0E-5D62C6ADA2F4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CDA83124-3392-4335-9B0E-5D62C6ADA2F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CDA83124-3392-4335-9B0E-5D62C6ADA2F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CDA83124-3392-4335-9B0E-5D62C6ADA2F4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4335FA46-DD14-4E0D-BF26-58B80AC22EF4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4335FA46-DD14-4E0D-BF26-58B80AC22EF4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4335FA46-DD14-4E0D-BF26-58B80AC22EF4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4335FA46-DD14-4E0D-BF26-58B80AC22EF4}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {67ABA856-4F5D-4856-B5C1-D74EC8D548A8}
+	EndGlobalSection
+EndGlobal

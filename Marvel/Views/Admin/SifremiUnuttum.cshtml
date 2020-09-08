@@ -1,0 +1,86 @@
+﻿@model Marvel.Models.Model.Admin
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Sifremi Unuttum - Admin</title>
+
+
+    <!-- Bootstrap CSS -->
+    <link href="/Content/AdminLayout/css/bootstrap.min.css" rel="stylesheet">
+    <!-- bootstrap theme -->
+    <link href="/Content/AdminLayout/css/bootstrap-theme.css" rel="stylesheet">
+    <!--external css-->
+    <!-- font icon -->
+    <link href="/Content/AdminLayout/css/elegant-icons-style.css" rel="stylesheet" />
+    <link href="/Content/AdminLayout/css/font-awesome.css" rel="stylesheet" />
+    <!-- Custom styles -->
+    <link href="/Content/AdminLayout/css/style.css" rel="stylesheet">
+    @*<link href="/Content/AdminLayout/css/style-responsive.css" rel="stylesheet" />*@
+</head>
+<body>
+    <br />
+    <div>
+        <p class="alert alert-info">@ViewBag.Uyari</p>
+        <h3 style="margin-left:50px; font-family:'Times New Roman', Times, serif"><b>Şifrenizi Mail Adresinize Göndereceğiz</b></h3>
+        <form action="/Admin/SifremiUnuttum/" method="post">
+            <div class="form-horizontal">
+
+                <hr />
+
+                <div class="form-group" style="margin-left:200px;">
+
+                    <div class="col-md-6">
+                        <input type="email" class="form-control" name="eposta" required placeholder="Mail Adresinizi Giriniz" />
+
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Gönder" class="btn btn-primary" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <a href="/Admin/Login/"> Giriş Sayfasına Git</a>
+                    </div>
+                </div>
+            </div>
+
+        </form>
+
+
+    </div>
+    @*@ViewBag.Uyari
+        @using (Html.BeginForm("SifremiUnuttum", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken()
+            <h3 style="margin-left:50px; font-family:'Times New Roman', Times, serif"><b>Şifrenizi Mail Adresinize Göndereceğiz</b></h3>
+            <br /><br />
+            <div class="form-horizontal" style="margin-left:200px;">
+                <hr />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Eposta, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-6">
+                        <input type="email" class="form-control" name="eposta" required placeholder="Eposta"/>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Gönder" class="btn btn-primary" />
+                    </div>
+                </div>
+            </div>
+        }*@
+
+</body>
+</html>

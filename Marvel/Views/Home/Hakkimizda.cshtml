@@ -1,0 +1,17 @@
+﻿@model Marvel.Models.Model.Hakkimizda 
+@{
+    ViewBag.Title = "Hakkımızda";
+    Layout = "~/Views/Shared/_SiteLayout.cshtml";
+}
+    <div class="container">
+        <div class="col-lg-12">
+            <h4>Marvel Entertainment Hakkında</h4>
+            <img src="https://blog.adgager.com/wp-content/uploads/2018/05/marvel.0.jpg" alt="" width="1000" height="600" style="margin-left:70px" />
+            <hr />
+            <p>
+                @Html.Raw(Model.Aciklama)
+            </p>
+        </div>
+    </div>
+
+

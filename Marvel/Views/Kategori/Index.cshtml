@@ -1,0 +1,41 @@
+﻿@model IEnumerable<Marvel.Models.Model.Kategori>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<br /><br /><br />
+<h2 style="margin-left:200px;">Kategori Kayıtları</h2>
+<br /><br />
+<p style="margin-left:200px;">
+    <b>@Html.ActionLink("Yeni Oluştur", "Create")</b>
+</p>
+<br />
+<table class="table table-striped" style="margin-left:200px;">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.KategoriAd)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Aciklama)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.KategoriAd)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Aciklama)
+        </td>
+        <td>
+            @Html.ActionLink("Düzenle", "Edit", new { id=item.KategoriId }) |
+            @*@Html.ActionLink("Detaylar", "Details", new { id=item.KategoriId }) |*@
+            @Html.ActionLink("Sil", "Delete", new { id=item.KategoriId })
+        </td>
+    </tr>
+}
+
+</table>

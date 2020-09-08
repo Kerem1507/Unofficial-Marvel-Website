@@ -1,0 +1,46 @@
+﻿@model IEnumerable<Marvel.Models.Model.Admin>
+
+@{
+    ViewBag.Title = "Adminler";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<br /><br /><br />
+<h2 style="margin-left:200px;">Yönetim Konseyi</h2>
+<br /><br />
+<p style="margin-left:200px;">
+    @Html.ActionLink("Yeni Ekle", "Create")
+</p>
+<table class="table table-striped" style="margin-left:200px;">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Eposta)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Sifre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Yetki)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Eposta)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Sifre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Yetki)
+        </td>
+        <td>
+            @Html.ActionLink("Düzenle", "Edit", new { id=item.AdminId }) |
+            @*@Html.ActionLink("Details", "Details", new { id=item.AdminId }) |*@
+            @Html.ActionLink("Sil", "Delete", new { id=item.AdminId })
+        </td>
+    </tr>
+}
+
+</table>
