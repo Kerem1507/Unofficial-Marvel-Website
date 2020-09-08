@@ -67,7 +67,7 @@ namespace Marvel.Controllers
                 WebMail.SmtpServer = "smtp.gmail.com";
                 WebMail.EnableSsl = true;
                 WebMail.UserName = "spikecowboy123@gmail.com";
-                WebMail.Password = "kerem1907";
+                WebMail.Password = "password";
                 WebMail.SmtpPort = 587;
                 WebMail.Send("spikecowboy123@gmail.com", adsoyad, email + " - " + adres + " - " + urun);
                 ViewBag.Uyari = "Formunuz başarıyla gönderildi!";
@@ -94,7 +94,7 @@ namespace Marvel.Controllers
                 WebMail.SmtpServer = "smtp.gmail.com";
                 WebMail.EnableSsl = true;
                 WebMail.UserName = "spikecowboy123@gmail.com";
-                WebMail.Password = "kerem1907";
+                WebMail.Password = "password";
                 WebMail.SmtpPort = 587;
                 WebMail.Send("spikecowboy123@gmail.com", konu, email + " - " + mesaj);
                 ViewBag.Uyari = "Formunuz başarıyla gönderildi!";
